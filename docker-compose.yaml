@@ -1,0 +1,30 @@
+services:
+  parser-app:
+    build:
+      context: csvnormalizer
+      dockerfile: Dockerfile
+    container_name: parser-app
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./csvnormalizer/parserapp:/src/parserapp"  #
+      - "./csvnormalizer/reconcilation:/src/reconcilation"  #
+      - "./csvnormalizer/manage.py:/src/manage.py"  #
+
+    command: python manage.py runserver 0.0.0.0:8080
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    environment:
+      - DATABASE_URL=postgres://user:password@db:5432/mydatabase
+      - DJANGO_SETTINGS_MODULE=parserapp.settings
+      - SECRET_KEY=${SECRET_KEY}
+    networks:
+      - parser-network
+
+
+networks:
+  parser-network:

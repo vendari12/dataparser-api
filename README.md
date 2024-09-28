@@ -14,9 +14,16 @@ Docker Compose
 Python
 Django
 Pandas
-djangorestframework 3.x+ (Optional if using Django Rest Framework)
+
 
 # HOW TO RUN THE PROJECT
 To run this project, open your terminal (preferably Linux) and run
 `docker compose up`
-Naviggate to `http://localhost:8080` to access the API
+Navigate to `http://localhost:8080/reconcile/` to access the API
+
+
+API CONTRACT
+TYPE: `FORM DATA`
+METHOD: `POST`
+PARAM: `format` ["json", "csv", "html"]
+`source` (source csv), `target` (target csv)

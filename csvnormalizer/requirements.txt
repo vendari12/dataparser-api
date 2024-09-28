@@ -1,0 +1,14 @@
+asgiref==3.8.1
+Django==5.1.1
+gevent==24.2.1
+gunicorn==23.0.0
+greenlet==3.1.1
+pandas==2.2.3
+python-dateutil==2.9.0.post0
+pytz==2024.2
+setuptools==75.1.0
+six==1.16.0
+sqlparse==0.5.1
+tzdata==2024.2
+zope.event==5.0
+zope.interface==7.0.3
